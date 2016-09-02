@@ -9,6 +9,7 @@ NODE3=r3
 COOKIE='NICAYNNZGMAHWQLRVQQU'
 DEFAULT_USER=admin
 DEFAULT_PASS=admin
+DATA_PATH=/home/freeman/rabbitmq
 
 echo "如果容器"$NODE2"已启动，停止并重新启动"
 docker rm -f $NODE2
@@ -21,6 +22,7 @@ docker run -d \
 -p 25672:25672 \
 -p 4369:4369 \
 -v /etc/hosts:/etc/hosts \
+-v $DATA_PATH:/var/lib/rabbitmq \
 -e RABBITMQ_DEFAULT_USER=admin \
 -e RABBITMQ_DEFAULT_PASS=admin \
 -e RABBITMQ_NODENAME=$NODE2 \
