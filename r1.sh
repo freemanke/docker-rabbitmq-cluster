@@ -6,7 +6,7 @@
 
 NODE1_IP=192.168.10.1
 NODE2_IP=192.168.10.2
-NODE2_IP=192.178.10.3
+NODE3_IP=192.178.10.3
 COOKIE='NICAYNNZGMAHWQLRVQQU'
 DEFAULT_USER=admin
 DEFAULT_PASS=admin
@@ -36,8 +36,8 @@ rabbitmq:3.6.1-management
 echo "等待"$NODE1"容器就绪..."
 sleep 5
 echo "添加节点地址映射到/etc/hosts文件..."
-docker exec $NODE1 bash -c 'echo "$NODE2_IP $NODE2" >> /etc/hosts'
-docker exec $NODE1 bash -c 'echo "$NODE3_IP $NODE3" >> /etc/hosts'
+docker exec $NODE1 bash -c "echo '$NODE2_IP $NODE2' >> /etc/hosts"
+docker exec $NODE1 bash -c "echo '$NODE3_IP $NODE3' >> /etc/hosts"
 
 echo "设置高可用策略..."
 docker exec $NODE1 rabbitmqctl set_policy HA '^(?!amq\.).*' '{"ha-mode": "all"}'

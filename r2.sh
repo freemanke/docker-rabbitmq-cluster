@@ -6,7 +6,7 @@
 
 NODE1_IP=192.168.10.1
 NODE2_IP=192.168.10.2
-NODE2_IP=192.178.10.3
+NODE3_IP=192.178.10.3
 COOKIE='NICAYNNZGMAHWQLRVQQU'
 DEFAULT_USER=admin
 DEFAULT_PASS=admin
@@ -37,8 +37,8 @@ echo "等待容器就绪"
 sleep 3
 
 echo "添加节点地址映射到/etc/hosts文件..."
-docker exec $NODE2 bash -c 'echo "$NODE1_IP $NODE1" >> /etc/hosts'
-docker exec $NODE2 bash -c 'echo "$NODE3_IP $NODE3" >> /etc/hosts'
+docker exec $NODE2 bash -c "echo '$NODE1_IP $NODE1' >> /etc/hosts"
+docker exec $NODE2 bash -c "echo '$NODE3_IP $NODE3' >> /etc/hosts"
 
 echo "正在加入集群"$NODE1"@"$NODE1"..."
 docker exec $NODE2 rabbitmqctl stop_app
